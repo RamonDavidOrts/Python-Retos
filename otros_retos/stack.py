@@ -21,7 +21,7 @@ class Stack:
     def size(self):
         return len(self.__data)
 
-    def empty(self):
+    def is_empty(self):
         return not self.__data
 
     def search(self, element):
