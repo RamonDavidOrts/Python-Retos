@@ -1,17 +1,26 @@
 def dec2bin(dec):
     bin = ""
+    newdec = abs(dec)
     if dec == 0:
         bin = "0"
-    while dec >= 1:
-        bin = str(dec % 2) + bin
-        dec = dec // 2
+    while newdec >= 1:
+        bin = str(newdec % 2) + bin
+        newdec = newdec // 2
+    if dec < 0:
+        bin = "-" + bin
     return bin
 
-def recursive_dec2bin(dec, bin=""):
-    if dec >= 1:
-        bin = str(dec % 2) + bin
-        dec = dec // 2
-        bin = recursive_dec2bin(dec, bin)
+def recursive_dec2bin(dec, newdec=None , bin=""):
+    if newdec == None:
+        newdec = abs(dec)
+    if dec == 0:
+        bin = "0"
+    if newdec >= 1:
+        bin = str(newdec % 2) + bin
+        newdec = newdec // 2
+        bin = recursive_dec2bin(dec, newdec, bin)
+    elif dec < 0:
+        bin = "-" + bin
     return bin
 
 print(dec2bin(45678313))
