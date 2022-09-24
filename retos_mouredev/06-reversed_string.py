@@ -5,13 +5,12 @@ def reverse(text):
     return new_text
 
 def recursive_reverse(text, reversed_text="", index=None):
-    if index is None:
-        index = len(text) - 1        
+    if index == -1:
+        return reversed_text
+    elif index is None:
+        index = len(text) - 1
     reversed_text += text[index]
-    if index > 0:
-        index = index - 1
-        reversed_text = recursive_reverse(text, reversed_text, index)
-    return reversed_text
+    return recursive_reverse(text, reversed_text, index - 1)
 
 text = "hocus pocus"
 print(reverse(text))
